@@ -21,6 +21,13 @@
       include_tasks: install_nodejs.yml
       when: "'v18' not in node_version.stdout"
 
+    - name: Creates directory
+      file:
+        path: /opt/juice-shop
+        state: directory
+        owner: juicer
+        group: juicer
+
     - name: Clone the Juice Shop repository
       git:
         repo: "{{ juice_shop_git_repo }}"
