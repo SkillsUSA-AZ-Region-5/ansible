@@ -14,26 +14,26 @@
       include_tasks: install_nodejs.yml
       when: "'v18' not in node_version.stdout"
 
+    - name: Clone the Juice Shop repository
+      git:
+        repo: "{{ juice_shop_git_repo }}"
+        dest: "{{ juice_shop_install_dir }}"
+        update: no
+        depth: 1
 
-- name: Clone the Juice Shop repository
-  git:
-    repo: "{{ juice_shop_git_repo }}"
-    dest: "{{ juice_shop_install_dir }}"
-    update: no
-    depth: 1
+    - name: Change directory to Juice Shop
+      command: cd {{ juice_shop_install_dir }}
+      args:
+        chdir: "{{ juice_shop_install_dir }}"
 
-- name: Change directory to Juice Shop
-  command: cd {{ juice_shop_install_dir }}
-  args:
-    chdir: "{{ juice_shop_install_dir }}"
-
-- name: Install Juice Shop dependencies
-  command: npm install
-  args:
-    chdir: "{{ juice_shop_install_dir }}"
-  when: not (juice_shop_install_dir is sameas '/opt/juice-shop' and juice_shop_git_repo == 'https://github.com/juice-shop/juice-shop.git')
-
-- name: Start Juice Shop
-  command: npm start
-  args:
-    chdir: "{{ juice_shop_install_dir }}"
+    - name: Install Juice Shop dependencies
+      command: npm install
+      args:
+        chdir: "{{ juice_shop_install_dir }}"
+      when: not (juice_shop_install_dir is sameas '/opt/juice-shop' and juice_shop_git_repo == 'https://github.com/juice-shop/juice-shop.git')
+    
+    - name: Start Juice Shop
+      command: npm start
+      args:
+        chdir: "{{ juice_shop_install_dir }}"
+    
