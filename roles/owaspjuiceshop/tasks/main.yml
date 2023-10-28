@@ -32,8 +32,8 @@
         chdir: "{{ juice_shop_install_dir }}"
       when: not (juice_shop_install_dir is sameas '/opt/juice-shop' and juice_shop_git_repo == 'https://github.com/juice-shop/juice-shop.git')
       
-    - name: Start Juice Shop
-      command: npm start
-      args:
-        chdir: "{{ juice_shop_install_dir }}"
+#    - name: Start Juice Shop
+#      command: npm start
+#      args:
+#        chdir: "{{ juice_shop_install_dir }}"
     
