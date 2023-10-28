@@ -1,7 +1,5 @@
 ---
 - name: Configure Node.js Repository and Install Node.js
-  hosts: owaspjuiceshop
-  become: yes
   tasks:
     - name: Update APT Package List
       apt:
