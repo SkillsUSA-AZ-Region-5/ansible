@@ -17,7 +17,6 @@
       loop:
         - git
 
-
     - name: Install Node.js
       include_tasks: install_nodejs.yml
       when: "'v18' not in node_version.stdout"
