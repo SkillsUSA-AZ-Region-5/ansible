@@ -11,7 +11,6 @@
     - ca-certificates
     - curl
     - gnupg
-    - npm
 
 - name: Create /etc/apt/keyrings Directory
   file:
