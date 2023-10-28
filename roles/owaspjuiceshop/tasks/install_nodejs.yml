@@ -7,7 +7,7 @@
 - name: Setup Node
   become: yes
   become_flags: -i
-  block:
+  tasks:
     - name: Install nvm
       ansible.builtin.shell: >
         curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.5/install.sh | bash
