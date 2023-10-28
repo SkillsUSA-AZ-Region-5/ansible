@@ -2,6 +2,7 @@
 - name: Update APT Package List
   apt:
     update_cache: yes
+  become: true
 
 - name: Install Required Packages
   apt:
@@ -11,30 +12,37 @@
     - ca-certificates
     - curl
     - gnupg
+  become: true
 
 - name: Create /etc/apt/keyrings Directory
   file:
     path: /etc/apt/keyrings
     state: directory
+  become: true
 
 - name: Download Node.js GPG Key
   get_url:
     url: https://deb.nodesource.com/gpgkey/nodesource-repo.gpg.key
     dest: /tmp/nodesource-repo.gpg.key
+  become: true
 
 - name: Import Node.js GPG Key
   command: gpg --dearmor -o /etc/apt/keyrings/nodesource.gpg /tmp/nodesource-repo.gpg.key
+  become: true
 
 - name: Set Node.js Repository
   command: echo "deb [signed-by=/etc/apt/keyrings/nodesource.gpg] https://deb.nodesource.com/node_{{ NODE_MAJOR }}.x nodistro main" | sudo tee /etc/apt/sources.list.d/nodesource.list
   environment:
     NODE_MAJOR: "18"
+  become: true
 
 - name: Update APT Package List Again
   apt:
     update_cache: yes
+  become: true
 
 - name: Install Node.js
   apt:
       name: nodejs
       state: present
+  become: true
