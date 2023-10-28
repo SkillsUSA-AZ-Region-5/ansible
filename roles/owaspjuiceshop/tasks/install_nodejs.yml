@@ -1,5 +1,7 @@
 ---
 - name: Configure Node.js Repository and Install Node.js
+  hosts: all
+  become: yes
   tasks:
     - name: Update APT Package List
       apt:
