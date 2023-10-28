@@ -9,6 +9,14 @@
       command: node -v
       register: node_version
       ignore_errors: yes
+    
+    - name: Install Required Packages
+      apt:
+        name: "{{ item }}"
+        state: present
+      loop:
+        - git
+
 
     - name: Install Node.js
       include_tasks: install_nodejs.yml
