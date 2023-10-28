@@ -37,7 +37,7 @@
         depth: 1
 
     - name: Install Juice Shop dependencies
-      command: npm install
+      command: npm install --loglevel verbose
       args:
         chdir: "{{ juice_shop_install_dir }}"
       
