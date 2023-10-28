@@ -28,13 +28,11 @@
 
     - name: Import Node.js GPG Key
       command: gpg --dearmor -o /etc/apt/keyrings/nodesource.gpg /tmp/nodesource-repo.gpg.key
-      become: yes
 
     - name: Set Node.js Repository
       command: echo "deb [signed-by=/etc/apt/keyrings/nodesource.gpg] https://deb.nodesource.com/node_{{ NODE_MAJOR }}.x nodistro main" | sudo tee /etc/apt/sources.list.d/nodesource.list
       environment:
         NODE_MAJOR: "18"
-      become: yes
 
     - name: Update APT Package List Again
       apt:
