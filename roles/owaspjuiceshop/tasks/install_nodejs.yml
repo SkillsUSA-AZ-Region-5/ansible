@@ -2,6 +2,7 @@
 - name: Update APT Package List
   apt:
     update_cache: yes
+  become: true
 
 - name: Install Required Packages
   apt:
