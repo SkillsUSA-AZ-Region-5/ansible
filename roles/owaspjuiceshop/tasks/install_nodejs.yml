@@ -1,42 +1,40 @@
 ---
-- name: Configure Node.js Repository and Install Node.js
-  tasks:
-    - name: Update APT Package List
-      apt:
-        update_cache: yes
+- name: Update APT Package List
+  apt:
+    update_cache: yes
 
-    - name: Install Required Packages
-      apt:
-        name: "{{ item }}"
-        state: present
-      loop:
-        - ca-certificates
-        - curl
-        - gnupg
+- name: Install Required Packages
+  apt:
+    name: "{{ item }}"
+    state: present
+  loop:
+    - ca-certificates
+    - curl
+    - gnupg
 
-    - name: Create /etc/apt/keyrings Directory
-      file:
-        path: /etc/apt/keyrings
-        state: directory
+- name: Create /etc/apt/keyrings Directory
+  file:
+    path: /etc/apt/keyrings
+    state: directory
 
-    - name: Download Node.js GPG Key
-      get_url:
-        url: https://deb.nodesource.com/gpgkey/nodesource-repo.gpg.key
-        dest: /tmp/nodesource-repo.gpg.key
+- name: Download Node.js GPG Key
+  get_url:
+    url: https://deb.nodesource.com/gpgkey/nodesource-repo.gpg.key
+    dest: /tmp/nodesource-repo.gpg.key
 
-    - name: Import Node.js GPG Key
-      command: gpg --dearmor -o /etc/apt/keyrings/nodesource.gpg /tmp/nodesource-repo.gpg.key
+- name: Import Node.js GPG Key
+  command: gpg --dearmor -o /etc/apt/keyrings/nodesource.gpg /tmp/nodesource-repo.gpg.key
 
-    - name: Set Node.js Repository
-      command: echo "deb [signed-by=/etc/apt/keyrings/nodesource.gpg] https://deb.nodesource.com/node_{{ NODE_MAJOR }}.x nodistro main" | sudo tee /etc/apt/sources.list.d/nodesource.list
-      environment:
-        NODE_MAJOR: "18"
+- name: Set Node.js Repository
+  command: echo "deb [signed-by=/etc/apt/keyrings/nodesource.gpg] https://deb.nodesource.com/node_{{ NODE_MAJOR }}.x nodistro main" | sudo tee /etc/apt/sources.list.d/nodesource.list
+  environment:
+    NODE_MAJOR: "18"
 
-    - name: Update APT Package List Again
-      apt:
-        update_cache: yes
+- name: Update APT Package List Again
+  apt:
+    update_cache: yes
 
-    - name: Install Node.js
-      apt:
-        name: nodejs
-        state: present
+- name: Install Node.js
+  apt:
+      name: nodejs
+    state: present
