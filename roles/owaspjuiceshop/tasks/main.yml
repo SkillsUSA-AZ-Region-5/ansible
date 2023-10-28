@@ -2,17 +2,18 @@
 ---
 
 - name: Install Node.js (if needed)
-  become: true
   hosts: all
   tasks:
     - name: Check if Node.js is installed
       command: node -v
       register: node_version
       ignore_errors: yes
+      become: true
 
     - name: Install Node.js
       include_tasks: install_nodejs.yml
       when: "'v18' not in node_version.stdout"
+      become: true
 
     - name: Clone the Juice Shop repository
       git:
@@ -31,7 +32,8 @@
       args:
         chdir: "{{ juice_shop_install_dir }}"
       when: not (juice_shop_install_dir is sameas '/opt/juice-shop' and juice_shop_git_repo == 'https://github.com/juice-shop/juice-shop.git')
-    
+      become: true
+      
     - name: Start Juice Shop
       command: npm start
       args:
