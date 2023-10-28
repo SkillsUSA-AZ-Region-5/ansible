@@ -3,6 +3,7 @@
 
 - name: Install Node.js (if needed)
   become: true
+  become_user: root
   hosts: all
   tasks:
     - name: Check if Node.js is installed
