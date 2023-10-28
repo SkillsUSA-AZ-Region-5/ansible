@@ -3,6 +3,7 @@
 
 - name: Install Node.js (if needed)
   become: true
+  hosts: owaspjuiceshop
   tasks:
     - name: Check if Node.js is installed
       command: node -v
