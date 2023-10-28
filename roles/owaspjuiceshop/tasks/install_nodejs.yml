@@ -6,7 +6,8 @@
 
 - name: Setup Node
   become: yes
-  become_flags: -i
+  become_flags: 
+    - -i
   tasks:
     - name: Install nvm
       ansible.builtin.shell: >
