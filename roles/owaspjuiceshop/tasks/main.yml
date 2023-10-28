@@ -4,7 +4,6 @@
 - name: Install Node.js (if needed)
   hosts: all
   become: true
-  become_method: sudo
   tasks:
     - name: Check if Node.js is installed
       command: node -v
