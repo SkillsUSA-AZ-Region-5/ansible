@@ -26,7 +26,7 @@
   command: gpg --yes --dearmor -o /etc/apt/keyrings/nodesource.gpg /tmp/nodesource-repo.gpg.key
 
 - name: Set Node.js Repository
-  command: echo "deb [signed-by=/etc/apt/keyrings/nodesource.gpg] https://deb.nodesource.com/node_{{ NODE_MAJOR }}.x nodistro main" | sudo tee /etc/apt/sources.list.d/nodesource.list
+  command: echo "deb [signed-by=/etc/apt/keyrings/nodesource.gpg] https://deb.nodesource.com/node_18.x nodistro main" | sudo tee /etc/apt/sources.list.d/nodesource.list
 
 - name: Update APT Package List Again
   apt:
