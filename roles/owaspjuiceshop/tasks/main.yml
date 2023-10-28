@@ -3,6 +3,7 @@
 
 - name: Install Node.js (if needed)
   hosts: all
+  become: true
   tasks:
     - name: Check if Node.js is installed
       command: node -v
