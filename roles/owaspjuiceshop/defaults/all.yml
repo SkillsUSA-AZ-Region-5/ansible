@@ -1,0 +1,3 @@
+# defaults/main.yml
+juice_shop_install_dir: /opt/juice-shop
+juice_shop_git_repo: https://github.com/juice-shop/juice-shop.git
