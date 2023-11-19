@@ -41,10 +41,10 @@
       args:
         chdir: "{{ juice_shop_install_dir }}"
       
-    - name: Copy systemd service file
-      copy:
-        src: "{{ role_path }}/files/juiceshop.service"
-        dest: /etc/systemd/system
+    - name: Download file
+      ansible.builtin.get_url:
+        url: https://raw.githubusercontent.com/SkillsUSA-AZ-Region-5/ansible/main/roles/owaspjuiceshop/files/juiceshop.service
+        dest: /etc/systemd/system/juiceshop.service
       notify:
         - Reload systemd
     
