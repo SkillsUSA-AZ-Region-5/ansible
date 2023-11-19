@@ -6,8 +6,6 @@ After=network.target
 [Service]
 ExecStart=/usr/bin/npm start
 WorkingDirectory=/opt/juice-shop
-User=juicer
-Environment=NODE_ENV=production
 Restart=always
 
 [Install]
