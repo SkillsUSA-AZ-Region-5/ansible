@@ -1,0 +1,14 @@
+[Unit]
+Description=Juiceshop App
+Documentation=https://pwning.owasp-juice.shop/companion-guide/latest/
+After=network.target
+
+[Service]
+ExecStart=/usr/bin/npm start
+WorkingDirectory=/opt/juice-shop
+User=juicer
+Environment=NODE_ENV=production
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
