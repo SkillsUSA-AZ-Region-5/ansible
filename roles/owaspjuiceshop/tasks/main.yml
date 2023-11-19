@@ -47,7 +47,7 @@
       
     - name: Copy systemd service file
       copy:
-        src: "{{ ansible_base_path }}"/files/juiceshop.service
+        src: "{{ ansible_base_path }}/files/juiceshop.service"
         dest: /etc/systemd/system
       notify:
         - Reload systemd
