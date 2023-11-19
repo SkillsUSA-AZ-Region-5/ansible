@@ -43,7 +43,7 @@
       
     - name: Copy systemd service file
       copy:
-        src: juiceshop.service
+        src: "{{ role_path }}/files/juiceshop.service"
         dest: /etc/systemd/system
       notify:
         - Reload systemd
