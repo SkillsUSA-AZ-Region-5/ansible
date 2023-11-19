@@ -45,8 +45,6 @@
       ansible.builtin.get_url:
         url: "https://raw.githubusercontent.com/SkillsUSA-AZ-Region-5/ansible/main/roles/owaspjuiceshop/files/juiceshop.service"
         dest: /etc/systemd/system/juiceshop.service
-      notify:
-        - Reload systemd
     
     - name: Install OWASP Juice Shop CTF Extension
       command: npm install -g juice-shop-ctf-cli
